@@ -1,0 +1,20 @@
+.parchis-bg {
+  background-image: url('../../assets/parchis-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.btn {
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
