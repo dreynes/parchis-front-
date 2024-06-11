@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../shared-services/auth.service';
 import { TokenStorageService } from '../token-storage.service';
 import { LoginCredentials } from '../auth-credentials';
 import {Router} from "@angular/router";
@@ -28,7 +28,6 @@ export class LoginComponent {
   onSubmit(): void {
     this.authService.login(this.form).subscribe(
       data => {
-        console.log("aqui");
         this.tokenStorage.saveToken(data.token);
         this.isLoginFailed = false;
         this.isLoggedIn = true;

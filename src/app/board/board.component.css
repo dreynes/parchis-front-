@@ -1,48 +1,16 @@
-.black-cell {
-  background-color: black;
-  color: white; /* Opcional: cambia el color del texto a blanco para que sea visible en el fondo negro */
-}
 
-.red-cell {
-  background-color: red;
-  color: white; /* Opcional: cambia el color del texto a blanco para que sea visible en el fondo rojo */
-}
-
-.yellow-cell {
-  background-color: yellow;
-  color: black; /* Opcional: cambia el color del texto a negro para que sea visible en el fondo amarillo */
-}
-
-.green-cell {
-  background-color: green;
-  color: white; /* Opcional: cambia el color del texto a blanco para que sea visible en el fondo verde */
-}
-
-.blue-cell {
-  background-color: lightblue;
-  color: black; /* Opcional: cambia el color del texto a negro para que sea visible en el fondo azul claro */
-}
-
-.light-grey-cell {
-  background-color: lightgrey;
-  color: black; /* Opcional: cambia el color del texto a negro para que sea visible en el fondo gris claro */
-}
-
-.board-cell {
-  position: relative;
-  width: 40px; /* Ancho de la celda */
-  height: 40px; /* Alto de la celda */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-
-}
 
 .board-container {
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.board {
   display: grid;
-  grid-template-columns: repeat(21, 40px); /* Número de columnas y ancho de las columnas */
-  grid-template-rows: repeat(21, 40px); /* Número de filas y alto de las filas */
+  grid-template-columns: repeat(21, 40px);
+  grid-template-rows: repeat(21, 40px);
 }
 .bordered-full {
   border-top: 1px solid black;
@@ -52,55 +20,27 @@
 }
 
 
-/* Estilos para las fichas rojas */
-.red-piece {
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  border: 2px solid black;
-  border-radius: 50%;
+.board-container {
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Estilos para las fichas amarillas */
-.yellow-piece {
-  width: 20px;
-  height: 20px;
-  background-color: yellow;
-  border: 2px solid black;
-  border-radius: 50%;
+.board-row {
+  display: flex;
 }
 
-/* Estilos para las fichas verdes */
-.green-piece {
-  width: 20px;
-  height: 20px;
-  background-color: green;
-  border: 2px solid black;
-  border-radius: 50%;
+.dice-container {
+  display: flex;
 }
 
-/* Estilos para las fichas azules */
-.blue-piece {
-  width: 20px;
-  height: 20px;
-  background-color: blue;
-  border: 2px solid black;
-  border-radius: 50%;
+.game-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin-right: 300px;
+  margin-top: 100px;
 }
-.diagonal-cell {
-  position: relative;
-}
-
-.diagonal-cell:before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 50px solid black;
-  top: 0;
-  left: 0;
-}
-
 

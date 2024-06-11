@@ -9,7 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { GameStartViewComponent } from './game-start-view/game-start-view.component';
 import { BoardComponent } from './board/board.component';
 import { PieceComponent } from './piece/piece.component';
-
+import { SquareComponent } from './square/square.component';
+import { SquareSafeComponent } from './square-safe/square-safe.component';
+import { SquareExitComponent } from './square-exit/square-exit.component';
+import { BorderComponent } from './border/border.component';
+import { HomeSquareComponent } from './home-square/home-square.component';
+import { DiceComponent } from './dice/dice.component';
+import { GameOpenedComponent } from './game-opened/game-opened.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +23,14 @@ import { PieceComponent } from './piece/piece.component';
     RegisterComponent,
     GameStartViewComponent,
     BoardComponent,
-    PieceComponent
+    PieceComponent,
+    SquareComponent,
+    SquareSafeComponent,
+    SquareExitComponent,
+    BorderComponent,
+    HomeSquareComponent,
+    DiceComponent,
+    GameOpenedComponent
   ],
   imports: [
     BrowserModule,

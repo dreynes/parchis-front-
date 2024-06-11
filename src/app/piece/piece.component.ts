@@ -8,5 +8,10 @@ import { Component, Input } from '@angular/core';
 export class PieceComponent {
   @Input() color: string = '';
 
-  constructor() {}
+  constructor() {
+  }
+
+  setColor(color: string){
+    this.color = color
+}
 }

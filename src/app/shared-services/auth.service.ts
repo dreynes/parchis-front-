@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoginCredentials, RegisterCredentials } from './auth-credentials';
+import { LoginCredentials, RegisterCredentials } from '../auth-credentials';
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -16,11 +16,11 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, credentials);
 
   }
-
   logOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
+
   register(user: RegisterCredentials): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, user);
   }

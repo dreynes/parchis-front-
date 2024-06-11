@@ -1,0 +1,41 @@
+.board-cell {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.black {
+  background-color: black;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.white {
+  background-color: #ffffff;
+}
+
+.light-grey{
+  background-color: lightgrey;
+}
+
+.bordered-full {
+  border: 2px solid black;
+}

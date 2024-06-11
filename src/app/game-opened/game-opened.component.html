@@ -1,0 +1,7 @@
+<div class="game-container">
+  <button class="exit-button" (click)="exitGame()">Salir</button>
+  <div class="game-content">
+    <app-dice></app-dice>
+    <app-board [board] = this.boardComponent.board></app-board>
+  </div>
+</div>
