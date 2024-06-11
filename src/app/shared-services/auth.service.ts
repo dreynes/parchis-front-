@@ -16,6 +16,7 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, credentials);
 
   }
+
   logOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);

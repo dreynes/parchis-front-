@@ -1,4 +1,3 @@
-
 <div class="board-container">
   <div *ngFor="let row of board; let rowIndex = index" class="board-row">
     <ng-container *ngFor="let cell of row; let colIndex = index">
@@ -6,7 +5,7 @@
                        [cellValue]="cell.value"
                        [cellColor]="cell.color"
                        (cellClick)="handleCellClick(rowIndex, colIndex)">
-        <ng-container *ngFor="let piece of cell.getPieces()">
+        <ng-container *ngFor="let piece of cell.pieces">
           <app-piece [color]="piece.color"></app-piece>
         </ng-container>
       </app-square-safe>
@@ -14,7 +13,7 @@
                        [cellValue]="cell.value"
                        [cellColor]="cell.color"
                        (cellClick)="handleCellClick(rowIndex, colIndex)">
-        <ng-container *ngFor="let piece of cell.getPieces()">
+        <ng-container *ngFor="let piece of cell.pieces">
           <app-piece [color]="piece.color"></app-piece>
         </ng-container>
       </app-square-exit>
@@ -22,18 +21,17 @@
                   [cellValue]="cell.value"
                   [cellColor]="cell.color"
                   (cellClick)="handleCellClick(rowIndex, colIndex)">
-        <ng-container *ngFor="let piece of cell.getPieces()">
+        <ng-container *ngFor="let piece of cell.pieces">
           <app-piece [color]="piece.color"></app-piece>
         </ng-container>
       </app-square>
       <app-border *ngIf="isBorder(cell)"></app-border>
       <app-home-square *ngIf="isHome(cell)"
-        [cellColor]="cell.color">
-        <ng-container *ngFor="let piece of cell.getPieces()">
+                       [cellColor]="cell.color">
+        <ng-container *ngFor="let piece of cell.pieces">
           <app-piece [color]="piece.color"></app-piece>
         </ng-container>
       </app-home-square>
     </ng-container>
   </div>
-
 </div>

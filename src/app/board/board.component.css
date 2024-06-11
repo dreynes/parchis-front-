@@ -1,17 +1,5 @@
 
 
-.board-container {
-
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.board {
-  display: grid;
-  grid-template-columns: repeat(21, 40px);
-  grid-template-rows: repeat(21, 40px);
-}
 .bordered-full {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
