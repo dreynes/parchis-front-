@@ -1,6 +1,8 @@
+import {Square} from "../square/square.model";
+
 import {Piece} from "../piece/piece.mode";
 
-export class HomeSquare {
+export class Goal {
   value: number;
   color: string;
   pieces: Piece[] = [];
@@ -16,5 +18,4 @@ export class HomeSquare {
   addPiece(piece: Piece) {
     this.pieces.push(piece);
   }
-
 }

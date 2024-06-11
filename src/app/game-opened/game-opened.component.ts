@@ -3,6 +3,7 @@ import { BoardComponent } from '../board/board.component';
 import { StartService } from '../shared-services/start.service';
 import {SquareConverterService} from "../shared-services/square-converter-service";
 import {DiceComponent} from "../dice/dice.component";
+import {Piece} from "../piece/piece.mode";
 @Component({
   selector: 'app-game-opened',
   templateUrl: './game-opened.component.html',

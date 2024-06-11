@@ -16,6 +16,7 @@ import { BorderComponent } from './border/border.component';
 import { HomeSquareComponent } from './home-square/home-square.component';
 import { DiceComponent } from './dice/dice.component';
 import { GameOpenedComponent } from './game-opened/game-opened.component';
+import { GoalComponent } from './goal/goal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { GameOpenedComponent } from './game-opened/game-opened.component';
     BorderComponent,
     HomeSquareComponent,
     DiceComponent,
-    GameOpenedComponent
+    GameOpenedComponent,
+    GoalComponent
   ],
   imports: [
     BrowserModule,

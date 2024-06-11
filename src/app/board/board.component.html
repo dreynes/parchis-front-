@@ -1,11 +1,11 @@
 <div class="board-container">
   <div *ngFor="let row of board; let rowIndex = index" class="board-row">
     <ng-container *ngFor="let cell of row; let colIndex = index">
-      <app-square-safe *ngIf="isSquareSafe(cell) && !isSquareExit(cell)"
+      <app-square-safe *ngIf="isSquareSafe(cell) && !isSquareExit(cell) && !isGoal(cell)"
                        [cellValue]="cell.value"
                        [cellColor]="cell.color"
                        (cellClick)="handleCellClick(rowIndex, colIndex)">
-        <ng-container *ngFor="let piece of cell.pieces">
+        <ng-container *ngFor="let piece of cell.getPieces()">
           <app-piece [color]="piece.color"></app-piece>
         </ng-container>
       </app-square-safe>
@@ -13,22 +13,24 @@
                        [cellValue]="cell.value"
                        [cellColor]="cell.color"
                        (cellClick)="handleCellClick(rowIndex, colIndex)">
-        <ng-container *ngFor="let piece of cell.pieces">
+        <ng-container *ngFor="let piece of cell.getPieces()">
           <app-piece [color]="piece.color"></app-piece>
         </ng-container>
       </app-square-exit>
-      <app-square *ngIf="!isSquareSafe(cell) && !isBorder(cell) && !isHome(cell)"
+      <app-goal *ngIf="isGoal(cell)" [pieces]="cell.getPieces()">
+      </app-goal>
+      <app-square *ngIf="!isSquareSafe(cell) && !isSquareExit(cell) && !isBorder(cell) && !isHome(cell) && !isGoal(cell)"
                   [cellValue]="cell.value"
                   [cellColor]="cell.color"
                   (cellClick)="handleCellClick(rowIndex, colIndex)">
-        <ng-container *ngFor="let piece of cell.pieces">
+        <ng-container *ngFor="let piece of cell.getPieces()">
           <app-piece [color]="piece.color"></app-piece>
         </ng-container>
       </app-square>
       <app-border *ngIf="isBorder(cell)"></app-border>
       <app-home-square *ngIf="isHome(cell)"
                        [cellColor]="cell.color">
-        <ng-container *ngFor="let piece of cell.pieces">
+        <ng-container *ngFor="let piece of cell.getPieces()">
           <app-piece [color]="piece.color"></app-piece>
         </ng-container>
       </app-home-square>

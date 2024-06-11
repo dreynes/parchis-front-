@@ -1,0 +1,4 @@
+<div class="goal-square">
+  <div *ngFor="let piece of pieces" class="piece" [ngStyle]="{'background-color': piece.color, 'width': getPieceSize(), 'height': getPieceSize()}">
+  </div>
+</div>

@@ -4,6 +4,7 @@ import {SquareSafe} from "../square-safe/square-safe.model";
 import {SquareExit} from "../square-exit/square-exit.model";
 import {Border} from "../border/border.model";
 import {HomeSquare} from "../home-square/home-square.model";
+import {Goal} from "../goal/goal.model";
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +19,9 @@ export class SquareConverterService {
       case 'Border':
         return <Square>new Border(data.value, data.color);
       case 'HomeSquare':
-        return new HomeSquare(data.value, data.color);
+        return <Square>new HomeSquare(data.value, data.color);
+      case 'Goal':
+        return <Square>new Goal(data.value, data.color);
       default:
         return new Square(data.value, data.color);
     }
