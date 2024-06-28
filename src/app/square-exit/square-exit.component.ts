@@ -11,7 +11,5 @@ export class SquareExitComponent extends SquareSafeComponent {
   constructor() {
     super();
   }
-  override handleClick() {
-    console.log("casilla de salida");
-  }
+
 }

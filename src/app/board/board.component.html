@@ -3,28 +3,28 @@
     <ng-container *ngFor="let cell of row; let colIndex = index">
       <app-square-safe *ngIf="isSquareSafe(cell) && !isSquareExit(cell) && !isGoal(cell)"
                        [cellValue]="cell.value"
-                       [cellColor]="cell.color"
-                       (cellClick)="handleCellClick(rowIndex, colIndex)">
+                       [cellColor]="cell.color">
         <ng-container *ngFor="let piece of cell.getPieces()">
-          <app-piece [color]="piece.color"></app-piece>
+          <app-piece [color]="piece.color"
+                     (pieceClick)="handlePieceClick(piece)"></app-piece>
         </ng-container>
       </app-square-safe>
       <app-square-exit *ngIf="isSquareExit(cell)"
                        [cellValue]="cell.value"
-                       [cellColor]="cell.color"
-                       (cellClick)="handleCellClick(rowIndex, colIndex)">
+                       [cellColor]="cell.color">
         <ng-container *ngFor="let piece of cell.getPieces()">
-          <app-piece [color]="piece.color"></app-piece>
+          <app-piece [color]="piece.color"
+                     (pieceClick)="handlePieceClick(piece)"></app-piece>
         </ng-container>
       </app-square-exit>
       <app-goal *ngIf="isGoal(cell)" [pieces]="cell.getPieces()">
       </app-goal>
       <app-square *ngIf="!isSquareSafe(cell) && !isSquareExit(cell) && !isBorder(cell) && !isHome(cell) && !isGoal(cell)"
                   [cellValue]="cell.value"
-                  [cellColor]="cell.color"
-                  (cellClick)="handleCellClick(rowIndex, colIndex)">
+                  [cellColor]="cell.color">
         <ng-container *ngFor="let piece of cell.getPieces()">
-          <app-piece [color]="piece.color"></app-piece>
+          <app-piece [color]="piece.color"
+                     (pieceClick)="handlePieceClick(piece)"></app-piece>
         </ng-container>
       </app-square>
       <app-border *ngIf="isBorder(cell)"></app-border>

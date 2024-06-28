@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { Square } from '../square/square.model';
-import {Piece} from "../piece/piece.mode";
+import {Piece} from "../piece/piece.model";
 
 @Component({
   selector: 'app-goal',

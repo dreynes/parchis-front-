@@ -20,6 +20,7 @@ export class AuthService {
   logOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+    return this.http.post(`${this.baseUrl}/logout`,"");
   }
 
   register(user: RegisterCredentials): Observable<any> {

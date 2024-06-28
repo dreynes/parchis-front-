@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-piece',
@@ -7,11 +7,15 @@ import { Component, Input } from '@angular/core';
 })
 export class PieceComponent {
   @Input() color: string = '';
+  @Output() pieceClick = new EventEmitter<void>();
 
   constructor() {
   }
 
   setColor(color: string){
     this.color = color
+}
+handleClick(){
+    this.pieceClick.emit();
 }
 }

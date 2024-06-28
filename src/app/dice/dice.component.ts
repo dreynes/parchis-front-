@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { PlayService } from "../shared-services/play.service";
 
 @Component({
   selector: 'app-dice',
@@ -7,9 +8,14 @@ import {Component, Input} from '@angular/core';
 })
 export class DiceComponent {
   @Input() currentValue: number = 1;
+  @Output() diceRolled = new EventEmitter<number>();
+
+  constructor(private playService: PlayService) { }
 
   rollDice() {
-    this.currentValue = Math.floor(Math.random() * 6) + 1;
+    this.playService.rollDice().subscribe(value => {
+      this.currentValue = value;
+      this.diceRolled.emit(value);  // Emit the dice value
+    });
   }
-
 }

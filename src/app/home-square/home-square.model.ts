@@ -1,4 +1,4 @@
-import {Piece} from "../piece/piece.mode";
+import {Piece} from "../piece/piece.model";
 
 export class HomeSquare {
   value: number;
