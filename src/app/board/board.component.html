@@ -19,7 +19,7 @@
       </app-square-exit>
       <app-goal *ngIf="isGoal(cell)" [pieces]="cell.getPieces()">
       </app-goal>
-      <app-square *ngIf="!isSquareSafe(cell) && !isSquareExit(cell) && !isBorder(cell) && !isHome(cell) && !isGoal(cell)"
+      <app-square *ngIf="!isSquareSafe(cell) && !isSquareExit(cell) && !isHome(cell) && !isGoal(cell)"
                   [cellValue]="cell.value"
                   [cellColor]="cell.color">
         <ng-container *ngFor="let piece of cell.getPieces()">
@@ -27,7 +27,6 @@
                      (pieceClick)="handlePieceClick(piece)"></app-piece>
         </ng-container>
       </app-square>
-      <app-border *ngIf="isBorder(cell)"></app-border>
       <app-home-square *ngIf="isHome(cell)"
                        [cellColor]="cell.color">
         <ng-container *ngFor="let piece of cell.getPieces()">

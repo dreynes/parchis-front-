@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Square } from '../square/square.model';
 import { SquareSafe } from '../square-safe/square-safe.model';
 import { SquareExit } from '../square-exit/square-exit.model';
-import { Border } from '../border/border.model';
 import { HomeSquare } from '../home-square/home-square.model';
 import { Goal } from '../goal/goal.model';
 import { Piece } from '../piece/piece.model';
@@ -22,11 +21,7 @@ export class SquareConverterService {
       case 'SquareExit':
         square = new SquareExit(data.value, data.color);
         break;
-      case 'Border':
-        // @ts-ignore
-        square = new Border(data.value, data.color);
-        break;
-      case 'HomeSquare':
+       case 'HomeSquare':
         // @ts-ignore
         square = new HomeSquare(data.value, data.color);
         break;

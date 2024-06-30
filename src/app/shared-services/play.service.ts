@@ -62,9 +62,15 @@ export class PlayService {
     const headers = this.getAuthHeaders();
     return this.http.get<Color>(`${this.baseUrl}/changeTurn`,{ headers });
   }
+  getTurn(): Observable<Color>{
+    const headers = this.getAuthHeaders();
+    return this.http.get<Color>(`${this.baseUrl}/getTurn`,{ headers });
+  }
   exit(){
     this.router.navigate(['/game-start']);
   }
+
+
 
 }
 

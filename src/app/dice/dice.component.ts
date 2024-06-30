@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, NgZone } from '@angular/core';
 import { PlayService } from "../shared-services/play.service";
 
 @Component({
@@ -10,12 +10,16 @@ export class DiceComponent {
   @Input() currentValue: number = 1;
   @Output() diceRolled = new EventEmitter<number>();
 
-  constructor(private playService: PlayService) { }
+  constructor(private playService: PlayService, private cdr: ChangeDetectorRef, private ngZone: NgZone) { }
 
   rollDice() {
     this.playService.rollDice().subscribe(value => {
-      this.currentValue = value;
-      this.diceRolled.emit(value);  // Emit the dice value
+      this.ngZone.run(() => {
+        this.currentValue = value;
+        this.cdr.detectChanges();
+        console.log("el dado vale: " + value);
+        this.diceRolled.emit(value);
+      });
     });
   }
 }

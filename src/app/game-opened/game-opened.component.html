@@ -1,12 +1,14 @@
 <div class="game-container">
-  <button class="exit-button" (click)="exitGame()">Salir</button>
+  <div class="button-container">
+    <button class="exit-button" (click)="exitGame()">Salir</button>
+    <button class="save-button" (click)="onSaveGame()">Guardar</button>
+  </div>
   <div class="game-content">
     <div class="turn-info">
       <h2 [ngClass]="turn">Turno del jugador: {{ turn }}</h2>
       <h2>{{ info }}</h2>
     </div>
     <app-dice (diceRolled)="onDiceRolled($event)"></app-dice>
-    <app-board [board]="board" [circuit]="circuit" [homes]="homes" [finalTracks]="finalTracks"
-               (pieceClick)="onPieceClicked($event)"></app-board>
+    <app-board [board]="board" (pieceClick)="onPieceClicked($event)"></app-board>
   </div>
 </div>

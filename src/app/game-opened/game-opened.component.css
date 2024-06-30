@@ -24,31 +24,51 @@
 .exit-button:hover {
   background-color: #cc0000;
 }
+
+.save-button {
+  position: absolute;
+  top: 20px;
+  left: 150px; /* Ajusta esta posición según sea necesario */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50; /* Color de fondo de los botones */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.save-button:hover {
+  background-color: #45a049; /* Cambia el color de fondo al pasar el cursor */
+}
+
 .ROJO {
   color: #cc0000;
 }
+
 .AZUL {
   color: #0000ff;
 }
+
 .VERDE {
   color: #1a4104;
 }
+
 .AMARILLO {
   color: #ffff00;
-}
-.exit-button:focus {
-  outline: none;
 }
 
 .game-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 300px;
+  margin-right: 300px; /* Ajusta este margen según sea necesario */
 }
+
 .turn-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px; /* Adjust the margin as needed */
+  margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
 }

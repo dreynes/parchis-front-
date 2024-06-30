@@ -19,3 +19,27 @@
     </div>
   </div>
 </div>
+
+<!-- Modal para seleccionar una partida guardada -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Seleccione una partida guardada</h2>
+    <ul>
+      <li *ngFor="let gameName of gameNames" (click)="onGameSelect(gameName)" [class.selected]="gameName === selectedGameName">
+        {{ gameName }}
+      </li>
+    </ul>
+    <button class="btn btn-primary" (click)="loadSelectedGame()">Cargar Partida</button>
+  </div>
+</div>
+
+<!-- Modal para el caso en que no hay partidas guardadas -->
+<div *ngIf="showNoGamesModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>No hay partidas guardadas</h2>
+    <p>No se encontraron partidas guardadas para su usuario.</p>
+    <button class="btn btn-primary" (click)="closeModal()">Cerrar</button>
+  </div>
+</div>

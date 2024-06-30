@@ -12,7 +12,6 @@ import { PieceComponent } from './piece/piece.component';
 import { SquareComponent } from './square/square.component';
 import { SquareSafeComponent } from './square-safe/square-safe.component';
 import { SquareExitComponent } from './square-exit/square-exit.component';
-import { BorderComponent } from './border/border.component';
 import { HomeSquareComponent } from './home-square/home-square.component';
 import { DiceComponent } from './dice/dice.component';
 import { GameOpenedComponent } from './game-opened/game-opened.component';
@@ -28,7 +27,6 @@ import { GoalComponent } from './goal/goal.component';
     SquareComponent,
     SquareSafeComponent,
     SquareExitComponent,
-    BorderComponent,
     HomeSquareComponent,
     DiceComponent,
     GameOpenedComponent,

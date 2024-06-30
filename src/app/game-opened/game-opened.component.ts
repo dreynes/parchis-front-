@@ -3,6 +3,7 @@ import { SquareConverterService } from '../shared-services/square-converter-serv
 import { delay, of, switchMap } from 'rxjs';
 import { PlayService } from '../shared-services/play.service';
 import { Piece } from '../piece/piece.model';
+import {SaveService} from "../shared-services/save.service";
 
 @Component({
   selector: 'app-game-opened',
@@ -10,7 +11,7 @@ import { Piece } from '../piece/piece.model';
   styleUrls: ['./game-opened.component.css']
 })
 export class GameOpenedComponent implements OnInit {
-  turn: string = 'ROJO';
+  turn: string = "";
   info: string = 'Tira el dado';
   diceRolled: boolean = false;
   canMove: boolean = false;
@@ -23,11 +24,22 @@ export class GameOpenedComponent implements OnInit {
 
   constructor(
     private squareConverterService: SquareConverterService,
-    private playService: PlayService
+    private playService: PlayService,
+    private saveService: SaveService
   ) { }
 
   ngOnInit(): void {
     this.updateBoard();
+    this.getTurn();
+  }
+
+  getTurn(){
+    this.playService.getTurn().subscribe(turn => {
+      this.turn = turn;
+      this.info = 'Tira el dado';
+      this.diceRolled = false;
+      this.canMove = false;
+    });
   }
 
   exitGame() {
@@ -44,7 +56,6 @@ export class GameOpenedComponent implements OnInit {
   onDiceRolled(diceValue: number): void {
     this.lastDiceValue = diceValue;
     this.diceRolled = true;
-    console.log('Dice rolled with value:', diceValue);
     this.canMoveAnyPiece(diceValue);
   }
 
@@ -71,7 +82,6 @@ export class GameOpenedComponent implements OnInit {
   updateBoard(): void {
     this.playService.updateBoard().subscribe(
       (data: any) => {
-        console.log('Datos recibidos del backend:', data);
         if (data && data.board && data.circuit && data.homes && data.finalTracks) {
           this.board = this.squareConverterService.convertBoard(data.board);
           this.circuit = this.squareConverterService.convertSquareArray(data.circuit);
@@ -112,7 +122,7 @@ export class GameOpenedComponent implements OnInit {
           this.canMove = false;
         } else {
           this.info += ' Esperando turno...';
-          this.changeTurnAfterDelay();
+          this.changeTurn();
         }
       }
     );
@@ -158,7 +168,7 @@ export class GameOpenedComponent implements OnInit {
       this.info += ' Has sacado un 6, vuelve a tirar.';
       this.diceRolled = false;
     } else {
-      this.changeTurnAfterDelay();
+      this.changeTurn();
     }
   }
 
@@ -178,23 +188,41 @@ export class GameOpenedComponent implements OnInit {
       } else {
         this.specialMovePending = false;
         this.info = 'Movimiento especial completado. Cambiando turno...';
-        this.changeTurnAfterDelay();
+        this.changeTurn();
       }
     } else {
       this.info = 'Esperando turno...';
-      this.changeTurnAfterDelay();
+      this.changeTurn();
     }
   }
 
-  private changeTurnAfterDelay(): void {
+  private changeTurn(): void {
     of(null).pipe(
-      delay(3000),
+      delay(2000),
       switchMap(() => this.playService.changeTurn())
-    ).subscribe(turn => {
-      this.turn = turn;
-      this.info = 'Tira el dado';
-      this.diceRolled = false;
-      this.canMove = false;
+    ).subscribe(() => {
+      this.getTurn();
+    });
+  }
+
+  onSaveGame() {
+    this.saveService.canSave().subscribe(canSave => {
+      if (!canSave) {
+        alert('Debes terminar el turno antes de guardar la partida.');
+      } else {
+        const saveName = prompt('Escribe un nombre para guardar la partida:');
+        if (saveName) {
+          this.saveService.saveGame(saveName).subscribe(
+            () => {
+              alert(`Partida guardada como '${saveName}' correctamente.`);
+            },
+            error => {
+              console.error('Error al guardar la partida:', error);
+              alert('Error al guardar la partida. Inténtalo de nuevo.');
+            }
+          );
+        }
+      }
     });
   }
 }

@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Square } from '../square/square.model';
 import {SquareSafe} from "../square-safe/square-safe.model";
 import {SquareExit} from "../square-exit/square-exit.model";
-import {Border} from "../border/border.model";
 import {HomeSquare} from "../home-square/home-square.model";
 import {Goal} from "../goal/goal.model";
 import {Piece} from "../piece/piece.model";
@@ -35,10 +34,6 @@ export class BoardComponent{
   }
   isSquareExit(cell: Square): boolean {
     return cell instanceof SquareExit;
-  }
-
-  isBorder(cell: Square): boolean {
-    return cell instanceof Border;
   }
 
   isHome(cell: Square): boolean {
