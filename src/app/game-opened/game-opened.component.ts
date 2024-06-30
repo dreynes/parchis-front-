@@ -16,9 +16,6 @@ export class GameOpenedComponent implements OnInit {
   diceRolled: boolean = false;
   canMove: boolean = false;
   board: any;
-  circuit: any;
-  homes: any;
-  finalTracks: any;
   lastDiceValue: number = 0;
   specialMovePending: boolean = false;
 
@@ -82,11 +79,8 @@ export class GameOpenedComponent implements OnInit {
   updateBoard(): void {
     this.playService.updateBoard().subscribe(
       (data: any) => {
-        if (data && data.board && data.circuit && data.homes && data.finalTracks) {
+        if (data && data.board) {
           this.board = this.squareConverterService.convertBoard(data.board);
-          this.circuit = this.squareConverterService.convertSquareArray(data.circuit);
-          this.homes = data.homes.map((home: any) => this.squareConverterService.convertSquareArray(home));
-          this.finalTracks = data.finalTracks.map((finalTrack: any) => this.squareConverterService.convertSquareArray(finalTrack));
           console.log('Datos del juego configurados en el estado.');
         } else {
           console.error('La estructura de los datos no es la esperada', data);

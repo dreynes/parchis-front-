@@ -9,9 +9,9 @@ import {Observable} from "rxjs";
 export class StartService{
   private baseUrl = 'http://localhost:8080/api/game/create';
   constructor(private http: HttpClient, private router: Router, private tokenStorage: TokenStorageService) { }
-  createGame(){
+  createGame(numOfPlayers: number){
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenStorage.getToken()}`);
-    return this.http.post(this.baseUrl + "/initializeBoard",{}, { headers });
+    return this.http.post(this.baseUrl + `/initializeBoard?numOfPlayers=${numOfPlayers}`,{}, { headers });
 
   }
 

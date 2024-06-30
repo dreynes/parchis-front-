@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from "../shared-services/auth.service";
 import { StartService } from "../shared-services/start.service";
 import { Router } from "@angular/router";
-import {OpenService} from "../shared-services/open.service";
+import { OpenService } from "../shared-services/open.service";
 
 @Component({
   selector: 'app-game-start-view',
@@ -13,7 +13,9 @@ export class GameStartViewComponent {
   gameNames: string[] = [];
   showModal: boolean = false;
   showNoGamesModal: boolean = false;
+  showPlayerSelectionModal: boolean = false;
   selectedGameName: string = '';
+  selectedPlayerCount: number | null = null;
 
   constructor(
     private authService: AuthService,
@@ -27,14 +29,26 @@ export class GameStartViewComponent {
   }
 
   newGame() {
-    this.startService.createGame().subscribe(
-      () => {
-        this.router.navigate(['/game-opened']);
-      },
-      error => {
-        console.error('Error creating game:', error);
-      }
-    );
+    this.showPlayerSelectionModal = true;
+  }
+
+  selectPlayerCount(playerCount: number) {
+    this.selectedPlayerCount = playerCount;
+    this.createGame();
+  }
+
+  createGame() {
+    if (this.selectedPlayerCount) {
+      this.startService.createGame(this.selectedPlayerCount).subscribe(
+        () => {
+          this.router.navigate(['/game-opened']);
+          this.showPlayerSelectionModal = false;
+        },
+        error => {
+          console.error('Error creating game:', error);
+        }
+      );
+    }
   }
 
   loadGame() {
@@ -75,5 +89,6 @@ export class GameStartViewComponent {
   closeModal() {
     this.showModal = false;
     this.showNoGamesModal = false;
+    this.showPlayerSelectionModal = false;
   }
 }

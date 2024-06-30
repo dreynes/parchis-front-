@@ -20,13 +20,40 @@
   </div>
 </div>
 
+<!-- Modal para seleccionar el número de jugadores -->
+<div *ngIf="showPlayerSelectionModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Seleccione el número de jugadores</h2>
+    <button
+      class="btn btn-primary"
+      (click)="selectPlayerCount(2)"
+      [class.selected]="selectedPlayerCount === 2">2 Jugadores</button>
+    <button
+      class="btn btn-primary"
+      (click)="selectPlayerCount(3)"
+      [class.selected]="selectedPlayerCount === 3">3 Jugadores</button>
+    <button
+      class="btn btn-primary"
+      (click)="selectPlayerCount(4)"
+      [class.selected]="selectedPlayerCount === 4">4 Jugadores</button>
+    <button
+      class="btn btn-primary"
+      [disabled]="!selectedPlayerCount"
+      (click)="createGame()">OK</button>
+  </div>
+</div>
+
 <!-- Modal para seleccionar una partida guardada -->
 <div *ngIf="showModal" class="modal">
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
     <h2>Seleccione una partida guardada</h2>
     <ul>
-      <li *ngFor="let gameName of gameNames" (click)="onGameSelect(gameName)" [class.selected]="gameName === selectedGameName">
+      <li
+        *ngFor="let gameName of gameNames"
+        (click)="onGameSelect(gameName)"
+        [class.selected]="gameName === selectedGameName">
         {{ gameName }}
       </li>
     </ul>

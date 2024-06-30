@@ -12,9 +12,6 @@ import {Piece} from "../piece/piece.model";
 })
 export class BoardComponent{
   @Input() board: Square[][] = [];
-  @Input() circuit: Square[] = [];
-  @Input() homes: Square[][] = [];
-  @Input() finalTracks: Square[][] = [];
   @Output() boardClick = new EventEmitter<{cell: Square}>();
 
   @Output() pieceClick = new EventEmitter<{piece: Piece}>();
