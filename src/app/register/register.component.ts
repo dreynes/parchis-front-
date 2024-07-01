@@ -5,7 +5,8 @@
 
   @Component({
     selector: 'app-register',
-    templateUrl: './register.component.html'
+    templateUrl: './register.component.html',
+    styleUrls: ['../login/login.component.css']
   })
   export class RegisterComponent {
     form: RegisterCredentials = {

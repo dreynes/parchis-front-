@@ -1,4 +1,4 @@
-<div class="mask">
+<div class="parchis-bg">
   <div class="d-flex justify-content-center align-items-center h-100">
     <div class="login-container">
       <div class="login-box">
@@ -16,13 +16,11 @@
             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
           </div>
         </form>
-        <div *ngIf="isLoginFailed" class="
-         text-danger mt-3">
+        <div *ngIf="isLoginFailed" class="text-danger mt-3">
           {{ errorMessage }}
         </div>
         <div class="text-center">
-          ¿No tienes una cuenta? <a href="/register
-">Registrate aquí</a>.
+          ¿No tienes una cuenta? <a href="/register">Regístrate aquí</a>.
         </div>
       </div>
     </div>
